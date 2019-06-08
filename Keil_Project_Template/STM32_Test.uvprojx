@@ -48,7 +48,7 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>..\ARMGCC_WS\Blinky\</OutputDirectory>
+          <OutputDirectory>.\Objects\</OutputDirectory>
           <OutputName>STM32_Test</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
@@ -381,16 +381,19 @@
       <Groups>
         <Group>
           <GroupName>Source Group 1</GroupName>
+        </Group>
+        <Group>
+          <GroupName>Source</GroupName>
           <Files>
             <File>
               <FileName>Blinky_Main.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Blinky_Main.c</FilePath>
+              <FilePath>.\Source\Blinky_Main.c</FilePath>
             </File>
             <File>
               <FileName>stm32l476.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\ARMGCC_WS\Blinky\stm32l476.h</FilePath>
+              <FilePath>.\Source\stm32l476.h</FilePath>
             </File>
           </Files>
         </Group>
