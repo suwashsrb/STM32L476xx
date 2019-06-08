@@ -1,0 +1,7 @@
+To compile:
+arm-none-eabi-gcc -g -static -mthumb -mcpu=cortex-m4 main.c init.c -T linker_script.ld -o main.elf -nostartfiles
+
+To convert to a binary image compatible with mbed:
+arm-none-eabi-objcopy -O binary main.elf main.bin
+
+Copy the file main.bin to the virtual disk provided by the STM32L476 Discovery board
