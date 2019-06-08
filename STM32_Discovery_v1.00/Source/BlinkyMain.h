@@ -1,0 +1,15 @@
+#ifndef BLINKY_MAIN_H
+#define BLINKY_MAIN_H
+
+typedef enum
+{
+	LED_RED_ON_E = 0,
+	LED_GREEN_ON_E,
+	LED_GREEN_RED_ON_E,
+	LED_TOGGLE_SLOW,
+	LED_TOGGLE_FAST,
+	LED_COLOR_NONE
+}LED_STATE_T;
+
+
+#endif/*BLINKY_MAIN_H*/
