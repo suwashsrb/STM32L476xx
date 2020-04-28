@@ -34,6 +34,10 @@
 #define BASE_ADDRESS_APB2_PERI_D				(uint32_t)0x40010000
 /************************************************************************/
 
+/******************* Base addresses of AHB1 bus domain peripherals *****************************/
+/*Base address of Reset and clock control(RCC) on AHB1 bus */
+#define BASE_ADDRESS_RCC_D						(uint32_t)0x40021000
+/***********************************************************************************************/
 /******************* Base addresses of AHB2 bus domain peripherals *****************************/
 
 /*Macro definition of GPIO register offset*/
@@ -183,8 +187,227 @@ typedef struct
 	  	  	  	  	  	  	  	*/
 }GPIO_RegDef_t;
 
+/* Structure definition for reset and clock control(RCC) registers*/
+typedef struct
+{
+	__IO uint32_t RCC_CR;				/* 	Clock control register
+											Address offset: 0x00
+											Refer Reference manual - Section 6.4.1
+								  	  	  	TODO: Add Reference manual Link
+										*/
+	__IO uint32_t RCC_ICSCR;			/* 	Internal clock sources calibration register
+											Address offset: 0x04
+										*/
+	__IO uint32_t RCC_CFGR;				/* 	Clock configuration register
+								   			Address offset: 0x08
+										*/
+	__IO uint32_t RCC_PLLCFGR;			/* 	PLL configuration register
+								   	   	   	Address offset: 0x0C
+	 	 	 	 	 	 	 	 	 	*/
+	__IO uint32_t RCC_PLLSAI1CFGR;		/* 	PLLSAI1 configuration register
+								   	   	   	Address offset: 0x10
+										*/
+	__IO uint32_t RCC_PLLSAI2CFGR; 		/* 	PLLSAI2 configuration register
+								   	   	   	Address offset: 0x14
+										*/
+	__IO uint32_t RCC_CIER;				/* 	Clock interrupt enable register
+								   	   	   	Address offset: 0x18
+										*/
+	__IO uint32_t RCC_CIFR; 			/* 	Clock interrupt flag register
+								   	   	    Address offset: 0x1C
+										*/
+	__IO uint32_t RCC_CICR;				/* 	Clock interrupt clear register
+										    Address offset: 0x20
+										*/
+	uint32_t Reserved0; 				/* 	4 bytes Reserved*/
+
+	__IO uint32_t RCC_AHB1RSTR; 		/* 	AHB1 peripheral reset register
+										    Address offset: 0x28
+										*/
+	__IO uint32_t RCC_AHB2RSTR; 		/* AHB2 peripheral reset register
+										   Address offset: 0x2C
+										*/
+	__IO uint32_t RCC_AHB3RSTR;			/* AHB3 peripheral reset register
+										   Address offset: 0x30
+										*/
+	uint32_t Reserved1;					/* 4 bytes Reserved */
+	__IO uint32_t RCC_APB1RSTR1;        /* APB1 peripheral reset register 1
+										  Address offset: 0x38
+										*/
+	__IO uint32_t RCC_APB1RSTR2; 		/* APB1 peripheral reset register 2
+	    								   Address offset: 0x3C
+										*/
+	__IO uint32_t RCC_APB2RSTR;			/* APB2 peripheral reset register
+										   Address offset: 0x40
+										*/
+	uint32_t Reserved2;					/* 4 Bytes Reserved */
+	__IO uint32_t RCC_AHB1ENR; 			/*  AHB1 peripheral clock enable register
+											Address offset: 0x48
+										*/
+	__IO uint32_t RCC_AHB2ENR; 			/* AHB2 peripheral clock enable register
+										   Address offset: 0x4C
+										*/
+	__IO uint32_t RCC_AHB3ENR;  		/* AHB3 peripheral clock enable register
+										   Address offset: 0x50
+										*/
+	uint32_t Reserved3;					/* Reserved 4 bytes */
+	__IO uint32_t RCC_APB1ENR1; 		/* APB1 peripheral clock enable register 1
+										   Address offset: 0x58
+										*/
+	__IO uint32_t RCC_APB1ENR2; 		/* APB1 peripheral clock enable register 2
+										   Address offset: 0x5C
+										*/
+	__IO uint32_t RCC_APB2ENR; 			/* APB2 peripheral clock enable register
+										   Address offset: 0x60
+										*/
+	uint32_t Reserved4; 				/* 4 bytes reserved */
+	__IO uint32_t RCC_AHB1SMENR; 		/* AHB1 peripheral clocks enable in Sleep and Stop modes register
+										   Address offset: 0x68
+										*/
+	__IO uint32_t RCC_AHB2SMENR; 		/* AHB2 peripheral clocks enable in Sleep and Stop modes register
+										   Address offset: 6C
+										*/
+	__IO uint32_t RCC_AHB3SMENR; 		/* AHB3 peripheral clocks enable in Sleep and Stop modes register
+										   Address offset: 0x70
+										*/
+	uint32_t Reserved5; 				/* 4 bytes reserved */
+	__IO uint32_t RCC_APB1SMENR1; 		/* APB1 peripheral clocks enable in Sleep and Stop modes register 1
+										   Address: 0x78
+										*/
+	__IO uint32_t RCC_APB1SMENR2; 		/* APB1 peripheral clocks enable in Sleep and Stop modes register 2
+										   Address offset: 0x7C
+										*/
+	__IO uint32_t RCC_APB2SMENR; 		/* APB2 peripheral clocks enable in Sleep and Stop modes register
+										   Address offset: 0x80
+										*/
+	uint32_t Reserved6;					/* Reserved 4 bytes */
+	__IO uint32_t RCC_CCIPR; 			/* Peripherals independent clock configuration register
+										   Address offset: 0x88
+										*/
+	__IO uint32_t RCC_BDCR; 			/* Backup domain control register
+										   Address offset: 0x90
+										*/
+	__IO uint32_t RCC_CSR; 				/* Control/status register
+										   Address offset: 0x94
+										*/
+}RCC_RegDef_t;
 /****************************End of Peripheral register definition structure*****************************************************************/
 
+/*
+ * Peripheral definition (Peripheral base address type casted to xxx_RegDef_t)
+ */
+/* Peripheral definition for GPIOs */
+#define GPIOA_D = (GPIO_RegDef_t*)BASE_ADDRESS_GPIO_A_D
+#define GPIOB_D = (GPIO_RegDef_t*)BASE_ADDRESS_GPIO_B_D
+#define GPIOC_D = (GPIO_RegDef_t*)BASE_ADDRESS_GPIO_C_D
+#define GPIOD_D = (GPIO_RegDef_t*)BASE_ADDRESS_GPIO_D_D
+#define GPIOE_D = (GPIO_RegDef_t*)BASE_ADDRESS_GPIO_E_D
+#define GPIOF_D = (GPIO_RegDef_t*)BASE_ADDRESS_GPIO_F_D
+#define GPIOG_D = (GPIO_RegDef_t*)BASE_ADDRESS_GPIO_G_D
+#define GPIOH_D = (GPIO_RegDef_t*)BASE_ADDRESS_GPIO_H_D
 
+/*Peripheral definition for Reset and clock control(RCC) register*/
+#define RCC_D = (RCC_RegDef_t*)BASE_ADDRESS_RCC_D;
+
+/************************************************** Macros to enable clocks for peripherals ***************************************************/
+/* Enable clock for GPIOA */
+#define ENABLE_GPIOA_PERI_D()					( RCC->RCC_AHB2ENR |= (1 << 0) )
+/* Enable clock for GPIOB */
+#define ENABLE_GPIOB_PERI_D()					( RCC->RCC_AHB2ENR |= (1 << 1) )
+/* Enable clock for GPIOC */
+#define ENABLE_GPIOC_PERI_D()					( RCC->RCC_AHB2ENR |= (1 << 2) )
+/* Enable clock for GPIOD */
+#define ENABLE_GPIOD_PERI_D()					( RCC->RCC_AHB2ENR |= (1 << 3) )
+/* Enable clock for GPIOE */
+#define ENABLE_GPIOE_PERI_D()					( RCC->RCC_AHB2ENR |= (1 << 4) )
+/* Enable clock for GPIOF */
+#define ENABLE_GPIOF_PERI_D()					( RCC->RCC_AHB2ENR |= (1 << 5) )
+/* Enable clock for GPIOG */
+#define ENABLE_GPIOG_PERI_D()					( RCC->RCC_AHB2ENR |= (1 << 6) )
+/* Enable clock for GPIOH */
+#define ENABLE_GPIOH_PERI_D()					( RCC->RCC_AHB2ENR |= (1 << 7) )
+
+/* Enable clock for I2C 1*/
+#define ENABLE_I2C1_PERI_D()					( RCC->RCC_APB1ENR1 |= (1 << 21) )
+/* Enable clock for I2C 2*/
+#define ENABLE_I2C2_PERI_D()					( RCC->RCC_APB1ENR1 |= (1 << 22) )
+/* Enable clock for I2C 3*/
+#define ENABLE_I2C3_PERI_D()					( RCC->RCC_APB1ENR1 |= (1 << 23) )
+
+/* Enable clock for SPI 1*/
+#define ENABLE_SPI1_PERI_D() 					( RCC->RCC_APB2ENR |= (1 << 12) )
+/* Enable clock for SPI 2*/
+#define ENABLE_SPI2_PERI_D() 					( RCC->RCC_APB1ENR1 |= (1 << 14) )
+/* Enable clock for SPI 3*/
+#define ENABLE_SPI3_PERI_D() 					( RCC->RCC_APB1ENR1 |= (1 << 15) )
+
+/* Enable clock for USART 1*/
+#define ENABLE_USART1_PERI_D() 					( RCC->RCC_APB2ENR |= (1 << 14) )
+/* Enable clock for LPUART 1*/
+#define ENABLE_LPUART1_PERI_D()					( RCC->RCC_APB1ENR2)|= (1 << 0) )
+/* Enable clock for USART 2*/
+#define ENABLE_USART2_PERI_D() 					( RCC->RCC_APB1ENR1 |= (1 << 17) )
+/* Enable clock for USART 3*/
+#define ENABLE_USART3_PERI_D() 					( RCC->RCC_APB1ENR1 |= (1 << 18) )
+/* Enable clock for UART 4*/
+#define ENABLE_UART2_PERI_D() 					( RCC->RCC_APB1ENR1 |= (1 << 19) )
+/* Enable clock for USART 5*/
+#define ENABLE_UART5_PERI_D() 					( RCC->RCC_APB1ENR1 |= (1 << 20) )
+
+/* Enable clock for EXTI */
+/* TODO: Add Macro*/
+/* Enable clock for SYSCFG */
+#define ENABLE_SYSCFG_PERI_D() 					( RCC->RCC_APB2ENR |= (1 << 0) )
+/*********************************************************************************************************************************************/
+
+/************************************************** Macros to disable clocks for peripherals *************************************************/
+/* Disable clock for GPIOA */
+#define DISABLE_GPIOA_PERI_D()					( RCC->RCC_AHB2ENR &= ~(1 << 0) )
+/* Disable clock for GPIOB */
+#define DISABLE_GPIOB_PERI_D()					( RCC->RCC_AHB2ENR &= ~(1 << 1) )
+/* Disable clock for GPIOC */
+#define DISABLE_GPIOC_PERI_D()					( RCC->RCC_AHB2ENR &= ~(1 << 2) )
+/* Disable clock for GPIOD */
+#define DISABLE_GPIOD_PERI_D()					( RCC->RCC_AHB2ENR &= ~(1 << 3) )
+/* Disable clock for GPIOE */
+#define DISABLE_GPIOE_PERI_D()					( RCC->RCC_AHB2ENR &= ~(1 << 4) )
+/* Disable clock for GPIOF */
+#define DISABLE_GPIOF_PERI_D()					( RCC->RCC_AHB2ENR &= ~(1 << 5) )
+/* Disable clock for GPIOG */
+#define DISABLE_GPIOG_PERI_D()					( RCC->RCC_AHB2ENR &= ~(1 << 6) )
+/* Disable clock for GPIOH */
+#define DISABLE_GPIOH_PERI_D()					( RCC->RCC_AHB2ENR &= ~(1 << 7) )
+
+/* Disable clock for I2C 1*/
+#define DISABLE_I2C1_PERI_D()					( RCC->RCC_APB1ENR1 &= ~(1 << 21) )
+/* Disable clock for I2C 2*/
+#define DISABLE_I2C2_PERI_D()					( RCC->RCC_APB1ENR1 &= ~(1 << 22) )
+/* Disable clock for I2C 3*/
+#define DISABLE_I2C3_PERI_D()					( RCC->RCC_APB1ENR1 &= ~(1 << 23) )
+
+/* Disable clock for SPI 1*/
+#define DISABLE_SPI1_PERI_D() 					( RCC->RCC_APB2ENR &= ~(1 << 12) )
+/* Disable clock for SPI 2*/
+#define DISABLE_SPI2_PERI_D() 					( RCC->RCC_APB1ENR1 &= ~(1 << 14) )
+/* Disable clock for SPI 3*/
+#define DISABLE_SPI3_PERI_D() 					( RCC->RCC_APB1ENR1 &= ~(1 << 15) )
+
+/* Disable clock for USART 1*/
+#define DISABLE_USART1_PERI_D() 				( RCC->RCC_APB2ENR &= ~(1 << 14) )
+/* Disable clock for LPUART 1*/
+#define DISABLE_LPUART1_PERI_D()				( RCC->RCC_APB1ENR2)&= ~(1 << 0) )
+/* Disable clock for USART 2*/
+#define DISABLE_USART2_PERI_D() 				( RCC->RCC_APB1ENR1 &= ~(1 << 17) )
+/* Disable clock for USART 3*/
+#define DISABLE_USART3_PERI_D() 				( RCC->RCC_APB1ENR1 &= ~(1 << 18) )
+/* Disable clock for UART 4*/
+#define DISABLE_UART2_PERI_D() 					( RCC->RCC_APB1ENR1 &= ~(1 << 19) )
+/* Disable clock for USART 5*/
+#define DISABLE_UART5_PERI_D() 					( RCC->RCC_APB1ENR1 &= ~(1 << 20) )
+
+/* Disable clock for EXTI */
+/* TODO: Add Macro*/
+/* Disable clock for SYSCFG */
+#define DISABLE_SYSCFG_PERI_D() 				( RCC->RCC_APB2ENR &= ~(1 << 0) )
 
 #endif /* DRIVERS_INCLUDES_STM32L476XX_H_ */
