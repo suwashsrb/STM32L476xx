@@ -10,9 +10,10 @@ Datasheet of controller(STM32L476xx) -
 User Manual for discovery kit- 
 
 Commit Information - 
-**Date** 							**Changes Description**
-26-April-2020: 			Initial Project created, Written MCU specific header file
+
+|**Date**				| 		**Changes Description**		|
+|26-April-2020: 		|	Initial Project created,         			Written MCU specific header file
 						Header file contains, memories base address of Flash, SRAM1,SRAM2 and ROM
 						Base address of BUS domains (AHB1, AHB2, APB1 and APB2)
 						Base address of periphers - GPIO, SPI, I2C, USART, UART, LPUART, EXTI and SYSCFG 
-						Structure definition of GPIO peripheral registers.
+						Structure definition of GPIO peripheral registers.|
